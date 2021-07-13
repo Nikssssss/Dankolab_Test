@@ -3,27 +3,53 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		F6B8C6FD269D771B00E1D687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */; };
 		F6B8C6FF269D771B00E1D687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */; };
-		F6B8C701269D771B00E1D687 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C700269D771B00E1D687 /* ViewController.swift */; };
-		F6B8C704269D771B00E1D687 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6B8C702269D771B00E1D687 /* Main.storyboard */; };
 		F6B8C706269D771D00E1D687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B8C705269D771D00E1D687 /* Assets.xcassets */; };
 		F6B8C709269D771D00E1D687 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6B8C707269D771D00E1D687 /* LaunchScreen.storyboard */; };
+		F6B8C714269D795A00E1D687 /* LaunchUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C713269D795A00E1D687 /* LaunchUI.swift */; };
+		F6B8C716269D798000E1D687 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C715269D798000E1D687 /* LoadingView.swift */; };
+		F6B8C718269D799100E1D687 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C717269D799100E1D687 /* StartView.swift */; };
+		F6B8C71C269D7C3900E1D687 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F6B8C71B269D7C3900E1D687 /* SnapKit */; };
+		F6B8C71E269D7F2400E1D687 /* LaunchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C71D269D7F2400E1D687 /* LaunchPresenter.swift */; };
+		F6B8C721269D82B600E1D687 /* ModuleNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C720269D82B600E1D687 /* ModuleNavigationItem.swift */; };
+		F6B8C723269D82D000E1D687 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C722269D82D000E1D687 /* Navigator.swift */; };
+		F6B8C725269D830100E1D687 /* LaunchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C724269D830100E1D687 /* LaunchAssembly.swift */; };
+		F6B8C728269D845500E1D687 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C727269D845500E1D687 /* DependencyContainer.swift */; };
+		F6B8C72B269D847800E1D687 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = F6B8C72A269D847800E1D687 /* Swinject */; };
+		F6B8C72E269DB6CB00E1D687 /* PropertiesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C72D269DB6CB00E1D687 /* PropertiesStorage.swift */; };
+		F6B8C73C269DD7A300E1D687 /* BooksListUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C73B269DD7A300E1D687 /* BooksListUI.swift */; };
+		F6B8C73E269DD7AF00E1D687 /* BooksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C73D269DD7AF00E1D687 /* BooksListView.swift */; };
+		F6B8C740269DD7BA00E1D687 /* BooksListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C73F269DD7BA00E1D687 /* BooksListPresenter.swift */; };
+		F6B8C742269DD7C600E1D687 /* BooksListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C741269DD7C600E1D687 /* BooksListAssembly.swift */; };
+		F6B8C744269DD7D200E1D687 /* BooksListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C743269DD7D200E1D687 /* BooksListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F6B8C6F9269D771B00E1D687 /* BooksRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F6B8C700269D771B00E1D687 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F6B8C703269D771B00E1D687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F6B8C705269D771D00E1D687 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6B8C708269D771D00E1D687 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6B8C70A269D771D00E1D687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6B8C713269D795A00E1D687 /* LaunchUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchUI.swift; sourceTree = "<group>"; };
+		F6B8C715269D798000E1D687 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		F6B8C717269D799100E1D687 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		F6B8C71D269D7F2400E1D687 /* LaunchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPresenter.swift; sourceTree = "<group>"; };
+		F6B8C720269D82B600E1D687 /* ModuleNavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleNavigationItem.swift; sourceTree = "<group>"; };
+		F6B8C722269D82D000E1D687 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		F6B8C724269D830100E1D687 /* LaunchAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAssembly.swift; sourceTree = "<group>"; };
+		F6B8C727269D845500E1D687 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		F6B8C72D269DB6CB00E1D687 /* PropertiesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertiesStorage.swift; sourceTree = "<group>"; };
+		F6B8C73B269DD7A300E1D687 /* BooksListUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListUI.swift; sourceTree = "<group>"; };
+		F6B8C73D269DD7AF00E1D687 /* BooksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListView.swift; sourceTree = "<group>"; };
+		F6B8C73F269DD7BA00E1D687 /* BooksListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListPresenter.swift; sourceTree = "<group>"; };
+		F6B8C741269DD7C600E1D687 /* BooksListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListAssembly.swift; sourceTree = "<group>"; };
+		F6B8C743269DD7D200E1D687 /* BooksListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6B8C71C269D7C3900E1D687 /* SnapKit in Frameworks */,
+				F6B8C72B269D847800E1D687 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +84,99 @@
 		F6B8C6FB269D771B00E1D687 /* BooksRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */,
-				F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */,
-				F6B8C700269D771B00E1D687 /* ViewController.swift */,
-				F6B8C702269D771B00E1D687 /* Main.storyboard */,
+				F6B8C726269D83F100E1D687 /* Application */,
+				F6B8C711269D78D100E1D687 /* Common */,
+				F6B8C710269D78C800E1D687 /* Modules */,
 				F6B8C705269D771D00E1D687 /* Assets.xcassets */,
 				F6B8C707269D771D00E1D687 /* LaunchScreen.storyboard */,
 				F6B8C70A269D771D00E1D687 /* Info.plist */,
 			);
 			path = BooksRecorder;
+			sourceTree = "<group>";
+		};
+		F6B8C710269D78C800E1D687 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C712269D78EC00E1D687 /* Launch */,
+				F6B8C73A269DD79000E1D687 /* BooksList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		F6B8C711269D78D100E1D687 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C727269D845500E1D687 /* DependencyContainer.swift */,
+				F6B8C72C269DB68400E1D687 /* Storages */,
+				F6B8C71F269D82A200E1D687 /* Navigation */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F6B8C712269D78EC00E1D687 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C719269D79A700E1D687 /* Views */,
+				F6B8C713269D795A00E1D687 /* LaunchUI.swift */,
+				F6B8C71D269D7F2400E1D687 /* LaunchPresenter.swift */,
+				F6B8C724269D830100E1D687 /* LaunchAssembly.swift */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		F6B8C719269D79A700E1D687 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C715269D798000E1D687 /* LoadingView.swift */,
+				F6B8C717269D799100E1D687 /* StartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6B8C71F269D82A200E1D687 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C720269D82B600E1D687 /* ModuleNavigationItem.swift */,
+				F6B8C722269D82D000E1D687 /* Navigator.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F6B8C726269D83F100E1D687 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */,
+				F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		F6B8C72C269DB68400E1D687 /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C72D269DB6CB00E1D687 /* PropertiesStorage.swift */,
+			);
+			path = Storages;
+			sourceTree = "<group>";
+		};
+		F6B8C73A269DD79000E1D687 /* BooksList */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C745269DD7D600E1D687 /* Views */,
+				F6B8C73B269DD7A300E1D687 /* BooksListUI.swift */,
+				F6B8C73F269DD7BA00E1D687 /* BooksListPresenter.swift */,
+				F6B8C741269DD7C600E1D687 /* BooksListAssembly.swift */,
+			);
+			path = BooksList;
+			sourceTree = "<group>";
+		};
+		F6B8C745269DD7D600E1D687 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C73D269DD7AF00E1D687 /* BooksListView.swift */,
+				F6B8C743269DD7D200E1D687 /* BooksListTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +195,10 @@
 			dependencies = (
 			);
 			name = BooksRecorder;
+			packageProductDependencies = (
+				F6B8C71B269D7C3900E1D687 /* SnapKit */,
+				F6B8C72A269D847800E1D687 /* Swinject */,
+			);
 			productName = BooksRecorder;
 			productReference = F6B8C6F9269D771B00E1D687 /* BooksRecorder.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +226,10 @@
 				Base,
 			);
 			mainGroup = F6B8C6F0269D771B00E1D687;
+			packageReferences = (
+				F6B8C71A269D7C3900E1D687 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F6B8C729269D847800E1D687 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = F6B8C6FA269D771B00E1D687 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +246,6 @@
 			files = (
 				F6B8C709269D771D00E1D687 /* LaunchScreen.storyboard in Resources */,
 				F6B8C706269D771D00E1D687 /* Assets.xcassets in Resources */,
-				F6B8C704269D771B00E1D687 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +256,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6B8C701269D771B00E1D687 /* ViewController.swift in Sources */,
+				F6B8C73C269DD7A300E1D687 /* BooksListUI.swift in Sources */,
+				F6B8C72E269DB6CB00E1D687 /* PropertiesStorage.swift in Sources */,
 				F6B8C6FD269D771B00E1D687 /* AppDelegate.swift in Sources */,
+				F6B8C723269D82D000E1D687 /* Navigator.swift in Sources */,
+				F6B8C744269DD7D200E1D687 /* BooksListTableViewCell.swift in Sources */,
+				F6B8C721269D82B600E1D687 /* ModuleNavigationItem.swift in Sources */,
+				F6B8C740269DD7BA00E1D687 /* BooksListPresenter.swift in Sources */,
+				F6B8C73E269DD7AF00E1D687 /* BooksListView.swift in Sources */,
+				F6B8C714269D795A00E1D687 /* LaunchUI.swift in Sources */,
+				F6B8C718269D799100E1D687 /* StartView.swift in Sources */,
+				F6B8C742269DD7C600E1D687 /* BooksListAssembly.swift in Sources */,
+				F6B8C716269D798000E1D687 /* LoadingView.swift in Sources */,
+				F6B8C728269D845500E1D687 /* DependencyContainer.swift in Sources */,
+				F6B8C71E269D7F2400E1D687 /* LaunchPresenter.swift in Sources */,
+				F6B8C725269D830100E1D687 /* LaunchAssembly.swift in Sources */,
 				F6B8C6FF269D771B00E1D687 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,14 +278,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F6B8C702269D771B00E1D687 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F6B8C703269D771B00E1D687 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F6B8C707269D771D00E1D687 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -341,6 +465,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F6B8C71A269D7C3900E1D687 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		F6B8C729269D847800E1D687 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F6B8C71B269D7C3900E1D687 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6B8C71A269D7C3900E1D687 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		F6B8C72A269D847800E1D687 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6B8C729269D847800E1D687 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F6B8C6F1269D771B00E1D687 /* Project object */;
 }
