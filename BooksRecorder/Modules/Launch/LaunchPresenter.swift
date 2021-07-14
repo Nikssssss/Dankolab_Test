@@ -15,10 +15,12 @@ protocol ILaunchPresenter: AnyObject {
 final class LaunchPresenter: ILaunchPresenter {
     private weak var launchUI: ILaunchUI?
     private let propertiesStorage: IPropertiesStorage
+    private let navigator: INavigator
     
-    init(launchUI: ILaunchUI, propertiesStorage: IPropertiesStorage) {
+    init(launchUI: ILaunchUI, propertiesStorage: IPropertiesStorage, navigator: INavigator) {
         self.launchUI = launchUI
         self.propertiesStorage = propertiesStorage
+        self.navigator = navigator
     }
     
     func loadView() {
@@ -44,17 +46,18 @@ private extension LaunchPresenter {
     
     func handleFinishingLaunch() {
         let delay = Double.random(in: 2...5)
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            print("navigator.launchDidFinish")
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+            self?.navigator.launchDidFinish()
         }
     }
     
     func showStartView() {
         let delay = Double.random(in: 2...5)
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+            guard let self = self else { return }
             self.launchUI?.setStartScreenView()
-            self.launchUI?.setStartButtonTapHandler {
-                print("navigator.launchDidFinish")
+            self.launchUI?.setStartButtonTapHandler { [weak self] in
+                self?.navigator.launchDidFinish()
             }
         }
     }

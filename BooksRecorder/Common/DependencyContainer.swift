@@ -28,5 +28,9 @@ final class DependencyContainer {
         self.container.register(IPropertiesStorage.self) { _ in
             return PropertiesStorage()
         }
+        
+        self.container.register(IBooksStorage.self) { _ in
+            return BooksStorage()
+        }
     }
 }

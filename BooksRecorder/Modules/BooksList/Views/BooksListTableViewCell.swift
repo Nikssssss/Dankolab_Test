@@ -18,6 +18,7 @@ class BooksListTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: BooksListTableViewCell.identifier)
+        self.accessoryType = .disclosureIndicator
     }
     
     required init?(coder: NSCoder) {

@@ -10,6 +10,7 @@ import UIKit
 
 protocol INavigator: AnyObject {
     func launch() -> ModuleNavigationItem?
+    func launchDidFinish()
 }
 
 final class Navigator: INavigator {    
@@ -19,6 +20,12 @@ final class Navigator: INavigator {
         guard let launchNavigationItem = LaunchAssembly.makeModule()
         else { return nil }
         return self.moduleNavigator.launch(with: launchNavigationItem)
+    }
+    
+    func launchDidFinish() {
+        guard let booksListNavigationItem = BooksListAssembly.makeModule()
+        else { return }
+        self.moduleNavigator.pushToMain(moduleNavigationItem: booksListNavigationItem)
     }
 }
 

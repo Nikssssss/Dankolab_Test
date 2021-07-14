@@ -27,6 +27,9 @@
 		F6B8C740269DD7BA00E1D687 /* BooksListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C73F269DD7BA00E1D687 /* BooksListPresenter.swift */; };
 		F6B8C742269DD7C600E1D687 /* BooksListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C741269DD7C600E1D687 /* BooksListAssembly.swift */; };
 		F6B8C744269DD7D200E1D687 /* BooksListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C743269DD7D200E1D687 /* BooksListTableViewCell.swift */; };
+		F6B8C747269DED8500E1D687 /* BooksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C746269DED8500E1D687 /* BooksStorage.swift */; };
+		F6B8C74D269DEECA00E1D687 /* BooksRecorder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C74B269DEECA00E1D687 /* BooksRecorder.xcdatamodeld */; };
+		F6B8C750269DEF8600E1D687 /* BookDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C74F269DEF8600E1D687 /* BookDto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		F6B8C73F269DD7BA00E1D687 /* BooksListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListPresenter.swift; sourceTree = "<group>"; };
 		F6B8C741269DD7C600E1D687 /* BooksListAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListAssembly.swift; sourceTree = "<group>"; };
 		F6B8C743269DD7D200E1D687 /* BooksListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListTableViewCell.swift; sourceTree = "<group>"; };
+		F6B8C746269DED8500E1D687 /* BooksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksStorage.swift; sourceTree = "<group>"; };
+		F6B8C74C269DEECA00E1D687 /* BooksRecorder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BooksRecorder.xcdatamodel; sourceTree = "<group>"; };
+		F6B8C74F269DEF8600E1D687 /* BookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 				F6B8C705269D771D00E1D687 /* Assets.xcassets */,
 				F6B8C707269D771D00E1D687 /* LaunchScreen.storyboard */,
 				F6B8C70A269D771D00E1D687 /* Info.plist */,
+				F6B8C74B269DEECA00E1D687 /* BooksRecorder.xcdatamodeld */,
 			);
 			path = BooksRecorder;
 			sourceTree = "<group>";
@@ -107,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				F6B8C727269D845500E1D687 /* DependencyContainer.swift */,
+				F6B8C74E269DEF7200E1D687 /* Dto */,
 				F6B8C72C269DB68400E1D687 /* Storages */,
 				F6B8C71F269D82A200E1D687 /* Navigation */,
 			);
@@ -155,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				F6B8C72D269DB6CB00E1D687 /* PropertiesStorage.swift */,
+				F6B8C746269DED8500E1D687 /* BooksStorage.swift */,
 			);
 			path = Storages;
 			sourceTree = "<group>";
@@ -177,6 +186,14 @@
 				F6B8C743269DD7D200E1D687 /* BooksListTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F6B8C74E269DEF7200E1D687 /* Dto */ = {
+			isa = PBXGroup;
+			children = (
+				F6B8C74F269DEF8600E1D687 /* BookDto.swift */,
+			);
+			path = Dto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,13 +279,16 @@
 				F6B8C723269D82D000E1D687 /* Navigator.swift in Sources */,
 				F6B8C744269DD7D200E1D687 /* BooksListTableViewCell.swift in Sources */,
 				F6B8C721269D82B600E1D687 /* ModuleNavigationItem.swift in Sources */,
+				F6B8C750269DEF8600E1D687 /* BookDto.swift in Sources */,
 				F6B8C740269DD7BA00E1D687 /* BooksListPresenter.swift in Sources */,
 				F6B8C73E269DD7AF00E1D687 /* BooksListView.swift in Sources */,
 				F6B8C714269D795A00E1D687 /* LaunchUI.swift in Sources */,
 				F6B8C718269D799100E1D687 /* StartView.swift in Sources */,
+				F6B8C747269DED8500E1D687 /* BooksStorage.swift in Sources */,
 				F6B8C742269DD7C600E1D687 /* BooksListAssembly.swift in Sources */,
 				F6B8C716269D798000E1D687 /* LoadingView.swift in Sources */,
 				F6B8C728269D845500E1D687 /* DependencyContainer.swift in Sources */,
+				F6B8C74D269DEECA00E1D687 /* BooksRecorder.xcdatamodeld in Sources */,
 				F6B8C71E269D7F2400E1D687 /* LaunchPresenter.swift in Sources */,
 				F6B8C725269D830100E1D687 /* LaunchAssembly.swift in Sources */,
 				F6B8C6FF269D771B00E1D687 /* SceneDelegate.swift in Sources */,
@@ -497,6 +517,19 @@
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		F6B8C74B269DEECA00E1D687 /* BooksRecorder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F6B8C74C269DEECA00E1D687 /* BooksRecorder.xcdatamodel */,
+			);
+			currentVersion = F6B8C74C269DEECA00E1D687 /* BooksRecorder.xcdatamodel */;
+			path = BooksRecorder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F6B8C6F1269D771B00E1D687 /* Project object */;
 }
