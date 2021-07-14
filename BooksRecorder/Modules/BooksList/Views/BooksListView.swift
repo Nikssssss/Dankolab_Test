@@ -11,6 +11,8 @@ class BooksListView: UIView {
     var numberOfRowsInSection: ((Int) -> Int)?
     var cellWillAppear: ((IBooksListTableCell, IndexPath) -> Void)?
     var titleForHeaderInSection: ((Int) -> String)?
+    var cellWillDelete: ((IndexPath) -> Void)?
+    var didSelectRow: ((IndexPath) -> Void)?
     
     private let booksTableView = UITableView(frame: .zero, style: .grouped)
     
@@ -20,7 +22,7 @@ class BooksListView: UIView {
     }
     
     func reloadData() {
-        self.booksTableView.reloadData()
+        self.booksTableView.reloadSections(IndexSet.init(integersIn: 0...1), with: .automatic)
     }
     
     func enableEmptyListView() {
@@ -46,6 +48,22 @@ extension BooksListView: UITableViewDelegate {
         headerView.tintColor = .black
         headerView.backgroundConfiguration?.backgroundColor = .white
         headerView.textLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.cellWillDelete?(indexPath)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.didSelectRow?(indexPath)
     }
 }
 

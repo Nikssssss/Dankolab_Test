@@ -13,8 +13,8 @@ protocol IBooksStorage: AnyObject {
     var overdueBooks: [BookDto] { get }
     var count: Int { get }
     func loadBooks()
-    func addBook(_ bookDto: BookDto)
-    func editBook(_ oldBookDto: BookDto, using editedBookDto: BookDto)
+    func addBook(_ bookDto: BookDto) -> Bool
+    func editBook(_ oldBookDto: BookDto, using editedBookDto: BookDto) -> Bool
     func removeBook(at row: Int)
 }
 
@@ -59,21 +59,27 @@ final class BooksStorage: IBooksStorage {
         self.books = (try? self.mainContext.fetch(fetchRequest)) ?? []
     }
     
-    func addBook(_ bookDto: BookDto) {
+    func addBook(_ bookDto: BookDto) -> Bool {
         guard self.getBookIfExists(with: bookDto.name) == nil
-        else { return }
+        else { return false }
         let book = Book(context: self.mainContext)
         book.name = bookDto.name
         book.deadlineDate = bookDto.deadlineDate
         try? self.mainContext.save()
+        return true
     }
     
-    func editBook(_ oldBookDto: BookDto, using editedBookDto: BookDto) {
-        guard let editedBook = self.getBookIfExists(with: oldBookDto.name)
-        else { return }
-        editedBook.name = editedBookDto.name
-        editedBook.deadlineDate = editedBookDto.deadlineDate
+    func editBook(_ oldBookDto: BookDto, using editedBookDto: BookDto) -> Bool {
+        guard let oldBook = self.getBookIfExists(with: oldBookDto.name)
+        else { return false }
+        if oldBookDto.name != editedBookDto.name
+            && self.getBookIfExists(with: editedBookDto.name) != nil {
+            return false
+        }
+        oldBook.name = editedBookDto.name
+        oldBook.deadlineDate = editedBookDto.deadlineDate
         try? self.mainContext.save()
+        return true
     }
     
     func removeBook(at row: Int) {
@@ -88,7 +94,9 @@ final class BooksStorage: IBooksStorage {
 
 private extension BooksStorage {
     func getBookIfExists(with name: String) -> Book? {
-        return self.books.first(where: { $0.name == name })
+        let fetchRequest: NSFetchRequest<Book> = Book.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "\(#keyPath(Book.name)) = %@", name)
+        return try? self.mainContext.fetch(fetchRequest).first
     }
     
     func getDay(from date: Date) -> Int {

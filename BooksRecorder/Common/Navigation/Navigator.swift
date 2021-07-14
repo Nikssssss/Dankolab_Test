@@ -11,6 +11,10 @@ import UIKit
 protocol INavigator: AnyObject {
     func launch() -> ModuleNavigationItem?
     func launchDidFinish()
+    func bookDidFinishEditing()
+    func bookWasAdded()
+    func addButtonPressedAtBooksList()
+    func bookPressedAtBooksList(bookDto: BookDto)
 }
 
 final class Navigator: INavigator {    
@@ -26,6 +30,26 @@ final class Navigator: INavigator {
         guard let booksListNavigationItem = BooksListAssembly.makeModule()
         else { return }
         self.moduleNavigator.pushToMain(moduleNavigationItem: booksListNavigationItem)
+    }
+    
+    func bookDidFinishEditing() {
+        self.moduleNavigator.popFromMain()
+    }
+    
+    func bookWasAdded() {
+        self.moduleNavigator.popFromMain()
+    }
+    
+    func addButtonPressedAtBooksList() {
+        guard let detailsNavigationItem = DetailsAssembly.makeModule()
+        else { return }
+        self.moduleNavigator.pushToMain(moduleNavigationItem: detailsNavigationItem)
+    }
+    
+    func bookPressedAtBooksList(bookDto: BookDto) {
+        guard let detailsNavigationItem = DetailsAssembly.makeModule(bookDto: bookDto)
+        else { return }
+        self.moduleNavigator.pushToMain(moduleNavigationItem: detailsNavigationItem)
     }
 }
 

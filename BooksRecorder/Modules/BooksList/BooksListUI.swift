@@ -13,6 +13,10 @@ protocol IBooksListUI: AnyObject {
     func setNumberOfRowsInSectionHandler(_ handler: ((Int) -> Int)?)
     func setCellWillAppearHandler(_ handler: ((IBooksListTableCell, IndexPath) -> Void)?)
     func setTitleForHeaderInSectionHandler(_ handler: ((Int) -> String)?)
+    func setCellWillDeleteHandler(_ handler: ((IndexPath) -> Void)?)
+    func setAddBookButtonTapHandler(_ handler: (() -> Void)?)
+    func setSortBooksButtonTapHandler(_ handler: (() -> Void)?)
+    func setDidSelectRowHandler(_ handler: ((IndexPath) -> Void)?)
     func reloadData()
     func enableEmptyListView()
     func disableEmptyListView()
@@ -21,6 +25,9 @@ protocol IBooksListUI: AnyObject {
 class BooksListUI: UIViewController {
     private let booksListView = BooksListView()
     private var presenter: IBooksListPresenter?
+    
+    private var addBookButtonTapHandler: (() -> Void)?
+    private var sortBooksButtonTapHandler: (() -> Void)?
     
     func setPresenter(_ presenter: IBooksListPresenter) {
         self.presenter = presenter
@@ -36,6 +43,12 @@ class BooksListUI: UIViewController {
         super.viewDidLoad()
         
         self.presenter?.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.presenter?.viewWillAppear()
     }
 }
 
@@ -61,6 +74,22 @@ extension BooksListUI: IBooksListUI {
         self.booksListView.titleForHeaderInSection = handler
     }
     
+    func setCellWillDeleteHandler(_ handler: ((IndexPath) -> Void)?) {
+        self.booksListView.cellWillDelete = handler
+    }
+    
+    func setAddBookButtonTapHandler(_ handler: (() -> Void)?) {
+        self.addBookButtonTapHandler = handler
+    }
+    
+    func setSortBooksButtonTapHandler(_ handler: (() -> Void)?) {
+        self.sortBooksButtonTapHandler = handler
+    }
+    
+    func setDidSelectRowHandler(_ handler: ((IndexPath) -> Void)?) {
+        self.booksListView.didSelectRow = handler
+    }
+    
     func reloadData() {
         self.booksListView.reloadData()
     }
@@ -82,9 +111,37 @@ private extension BooksListUI {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         let navigationAppearance = UINavigationBarAppearance()
-        navigationAppearance.backgroundColor = .white
+        navigationAppearance.backgroundColor = UIColor(red: 248 / 255.0,
+                                                       green: 248 / 255.0,
+                                                       blue: 248 / 255.0,
+                                                       alpha: 1.0)
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
-        self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationItem.title = "Books list"
+        self.configureAddingBookBarButton()
+        self.configureSortingBooksButton()
+    }
+    
+    func configureAddingBookBarButton() {
+        let addBookButton = UIBarButtonItem()
+        addBookButton.image = UIImage(systemName: "plus")
+        addBookButton.target = self
+        addBookButton.action = #selector(self.addBookButtonPressed)
+        self.navigationItem.rightBarButtonItem = addBookButton
+    }
+    
+    func configureSortingBooksButton() {
+        let sortBooksButton = UIBarButtonItem()
+        sortBooksButton.image = UIImage(named: "sort")
+        sortBooksButton.target = self
+        sortBooksButton.action = #selector(self.sortBooksButtonPressed)
+        self.navigationItem.leftBarButtonItem = sortBooksButton
+    }
+    
+    @objc func addBookButtonPressed() {
+        self.addBookButtonTapHandler?()
+    }
+    
+    @objc func sortBooksButtonPressed() {
+        self.sortBooksButtonTapHandler?()
     }
 }

@@ -31,6 +31,6 @@ final class DependencyContainer {
         
         self.container.register(IBooksStorage.self) { _ in
             return BooksStorage()
-        }
+        }.inObjectScope(.container)
     }
 }

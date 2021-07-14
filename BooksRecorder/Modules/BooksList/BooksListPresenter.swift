@@ -11,15 +11,20 @@ import class UIKit.UIColor
 protocol IBooksListPresenter: AnyObject {
     func loadView()
     func viewDidLoad()
+    func viewWillAppear()
 }
 
 final class BooksListPresenter: IBooksListPresenter {
     private weak var booksListUI: IBooksListUI?
     private let booksStorage: IBooksStorage
+    private let navigator: INavigator
     
-    init(booksListUI: IBooksListUI, booksStorage: IBooksStorage) {
+    init(booksListUI: IBooksListUI,
+         booksStorage: IBooksStorage,
+         navigator: INavigator) {
         self.booksListUI = booksListUI
         self.booksStorage = booksStorage
+        self.navigator = navigator
     }
     
     func loadView() {
@@ -29,6 +34,9 @@ final class BooksListPresenter: IBooksListPresenter {
     func viewDidLoad() {
         self.booksListUI?.configureUI()
         self.hookUI()
+    }
+    
+    func viewWillAppear() {
         self.handleBooksLoading()
     }
 }
@@ -38,6 +46,10 @@ private extension BooksListPresenter {
         self.hookNumberOfRowsInSectionHandler()
         self.hookCellWillAppearHandler()
         self.hookTitleForHeaderInSectionHandler()
+        self.hookCellWillDeleteHandler()
+        self.hookAddBookButtonTapHandler()
+        self.hookSortBooksButtonTapHandler()
+        self.hookDidSelectRowHandler()
     }
     
     func hookNumberOfRowsInSectionHandler() {
@@ -83,6 +95,42 @@ private extension BooksListPresenter {
                 return self.booksStorage.validBooks.count > 0 ? "On time books" : ""
             default:
                 return ""
+            }
+        })
+    }
+    
+    func hookCellWillDeleteHandler() {
+        self.booksListUI?.setCellWillDeleteHandler({ [weak self] indexPath in
+            guard let self = self else { return }
+            self.booksStorage.removeBook(at: indexPath.row)
+            self.handleBooksLoading()
+        })
+    }
+    
+    func hookAddBookButtonTapHandler() {
+        self.booksListUI?.setAddBookButtonTapHandler({ [weak self] in
+            self?.navigator.addButtonPressedAtBooksList()
+        })
+    }
+    
+    func hookSortBooksButtonTapHandler() {
+        self.booksListUI?.setSortBooksButtonTapHandler({ [weak self] in
+            
+        })
+    }
+    
+    func hookDidSelectRowHandler() {
+        self.booksListUI?.setDidSelectRowHandler({ [weak self] indexPath in
+            guard let self = self else { return }
+            switch indexPath.section {
+            case 0:
+                let bookDto = self.booksStorage.overdueBooks[indexPath.row]
+                self.navigator.bookPressedAtBooksList(bookDto: bookDto)
+            case 1:
+                let bookDto = self.booksStorage.validBooks[indexPath.row]
+                self.navigator.bookPressedAtBooksList(bookDto: bookDto)
+            default:
+                break
             }
         })
     }

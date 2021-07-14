@@ -13,7 +13,7 @@ class StartView: UIView {
     private let containerView = UIStackView()
     private let titleView = UIImageView()
     private let bookImageView = UIImageView()
-    private let startButton = UIButton()
+    private let startButton = ActionButton()
     
     func configureView() {
         self.backgroundColor = .white
@@ -79,17 +79,6 @@ private extension StartView {
             make.height.equalTo(50)
         }
         self.startButton.setTitle("Start", for: .normal)
-        self.startButton.setTitleColor(.white, for: .normal)
-        self.startButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        self.startButton.backgroundColor = UIColor(red: 7 / 255.0,
-                                                   green: 123 / 255.0,
-                                                   blue: 249 / 255.0,
-                                                   alpha: 1.0)
-        self.startButton.layer.cornerRadius = 10
-        self.startButton.layer.shadowColor = UIColor.darkGray.cgColor
-        self.startButton.layer.shadowOffset = CGSize(width: 1, height: 2)
-        self.startButton.layer.shadowRadius = 3
-        self.startButton.layer.shadowOpacity = 1
         self.startButton.addTarget(self,
                                    action: #selector(self.startButtonPressed),
                                    for: .touchUpInside)

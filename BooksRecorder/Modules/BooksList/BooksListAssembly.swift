@@ -9,12 +9,16 @@ import Foundation
 
 final class BooksListAssembly {
     static func makeModule() -> ModuleNavigationItem? {
-        guard let booksStorage = DependencyContainer.shared.container.resolve(IBooksStorage.self)
+        let container = DependencyContainer.shared.container
+        guard let booksStorage = container.resolve(IBooksStorage.self),
+              let navigator = container.resolve(INavigator.self)
         else { return nil }
         
         let booksListUI = BooksListUI()
         
-        let presenter = BooksListPresenter(booksListUI: booksListUI, booksStorage: booksStorage)
+        let presenter = BooksListPresenter(booksListUI: booksListUI,
+                                           booksStorage: booksStorage,
+                                           navigator: navigator)
         booksListUI.setPresenter(presenter)
         
         return ModuleNavigationItem(viewController: booksListUI)
