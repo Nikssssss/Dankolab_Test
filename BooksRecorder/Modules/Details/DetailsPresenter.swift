@@ -56,6 +56,7 @@ private extension DetailsPresenter {
             self.detailsUI?.enableConfirmButton()
         } else {
             self.detailsUI?.disableConfirmButton()
+            self.detailsUI?.clearNameTextField()
         }
     }
 }

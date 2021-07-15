@@ -34,6 +34,10 @@ class DetailsView: UIView {
     func disableConfirmButton() {
         self.confirmButton.isEnabled = false
     }
+    
+    func clearNameTextField() {
+        self.bookNameTextField.text = ""
+    }
 }
 
 extension DetailsView: UITextFieldDelegate {
@@ -75,10 +79,12 @@ private extension DetailsView {
         }
         self.deadlineDatePicker.datePickerMode = .date
         self.deadlineDatePicker.preferredDatePickerStyle = .wheels
-        let currentDate = Date()
+        let currentDate = Calendar.current.date(byAdding: .day,
+                                                value: -2,
+                                                to: Date())
         let threeMonthsAgoDate = Calendar.current.date(byAdding: .month,
                                                       value: 3,
-                                                      to: currentDate)
+                                                      to: currentDate!)
         self.deadlineDatePicker.minimumDate = currentDate
         self.deadlineDatePicker.maximumDate = threeMonthsAgoDate
         if let deadlineDate = deadlineDate {
@@ -87,17 +93,53 @@ private extension DetailsView {
     }
     
     func configureConfirmButton(titled title: String) {
-        self.confirmButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-50)
+        self.makeConfirmButtonConstraints(bottomOffset: -50)
+        self.confirmButton.setTitle(title, for: .normal)
+        self.confirmButton.addTarget(self,
+                                   action: #selector(self.confirmButtonPressed),
+                                   for: .touchUpInside)
+        self.moveConfirmButtonWhenKeyboardShows()
+    }
+    
+    func makeConfirmButtonConstraints(bottomOffset: CGFloat) {
+        self.confirmButton.snp.remakeConstraints { make in
+            make.bottom.equalToSuperview().offset(bottomOffset)
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
             make.height.equalTo(50)
         }
-        self.confirmButton.setTitle(title, for: .normal)
-        self.confirmButton.addTarget(self,
-                                   action: #selector(self.confirmButtonPressed),
-                                   for: .touchUpInside)
+    }
+    
+    func moveConfirmButtonWhenKeyboardShows() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+                                as? NSValue)?.cgRectValue {
+            if self.confirmButton.frame.origin.y == (self.frame.height - 50 - 50) { // - offset - button.height
+                self.confirmButton.frame.origin.y -= (keyboardSize.height - 25)
+                self.makeConfirmButtonConstraints(bottomOffset: -50 - (keyboardSize.height - 25))
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
+                                as? NSValue)?.cgRectValue {
+            if self.confirmButton.frame.origin.y == (self.frame.height - (keyboardSize.height + (50 + 50 - 25))) {
+                self.confirmButton.frame.origin.y += (keyboardSize.height - 25)
+                self.makeConfirmButtonConstraints(bottomOffset: -50)
+            }
+        }
     }
     
     @objc func confirmButtonPressed() {

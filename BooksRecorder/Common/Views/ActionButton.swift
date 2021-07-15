@@ -24,11 +24,13 @@ class ActionButton: UIButton {
                                                green: 123 / 255.0,
                                                blue: 249 / 255.0,
                                                alpha: 1.0)
+                self.enableShadows()
             } else {
                 self.backgroundColor = UIColor(red: 201 / 255.0,
                                                green: 201 / 255.0,
                                                blue: 204 / 255.0,
                                                alpha: 1.0)
+                self.disableShadows()
             }
         }
     }
@@ -37,13 +39,18 @@ class ActionButton: UIButton {
         self.setTitleColor(.white, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         self.layer.cornerRadius = 10
-        self.configureShadows()
     }
     
-    private func configureShadows() {
+    private func enableShadows() {
         self.layer.shadowColor = UIColor.darkGray.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 2)
         self.layer.shadowRadius = 3
         self.layer.shadowOpacity = 1
+    }
+    
+    private func disableShadows() {
+        self.layer.shadowOffset = .zero
+        self.layer.shadowRadius = 0
+        self.layer.shadowOpacity = 0
     }
 }

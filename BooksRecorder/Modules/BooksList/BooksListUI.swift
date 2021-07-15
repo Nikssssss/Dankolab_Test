@@ -17,9 +17,12 @@ protocol IBooksListUI: AnyObject {
     func setAddBookButtonTapHandler(_ handler: (() -> Void)?)
     func setSortBooksButtonTapHandler(_ handler: (() -> Void)?)
     func setDidSelectRowHandler(_ handler: ((IndexPath) -> Void)?)
+    func setNameSortActionTapHandler(_ handler: (() -> Void)?)
+    func setDateSortActionTapHandler(_ handler: (() -> Void)?)
     func reloadData()
     func enableEmptyListView()
     func disableEmptyListView()
+    func showSortTypes()
 }
 
 class BooksListUI: UIViewController {
@@ -28,6 +31,8 @@ class BooksListUI: UIViewController {
     
     private var addBookButtonTapHandler: (() -> Void)?
     private var sortBooksButtonTapHandler: (() -> Void)?
+    private var nameSortActionTapHandler: (() -> Void)?
+    private var dateSortActionTapHandler: (() -> Void)?
     
     func setPresenter(_ presenter: IBooksListPresenter) {
         self.presenter = presenter
@@ -90,6 +95,14 @@ extension BooksListUI: IBooksListUI {
         self.booksListView.didSelectRow = handler
     }
     
+    func setNameSortActionTapHandler(_ handler: (() -> Void)?) {
+        self.nameSortActionTapHandler = handler
+    }
+    
+    func setDateSortActionTapHandler(_ handler: (() -> Void)?) {
+        self.dateSortActionTapHandler = handler
+    }
+    
     func reloadData() {
         self.booksListView.reloadData()
     }
@@ -100,6 +113,10 @@ extension BooksListUI: IBooksListUI {
     
     func disableEmptyListView() {
         self.booksListView.disableEmptyListView()
+    }
+    
+    func showSortTypes() {
+        self.showSortActionSheet()
     }
 }
 
@@ -135,6 +152,25 @@ private extension BooksListUI {
         sortBooksButton.target = self
         sortBooksButton.action = #selector(self.sortBooksButtonPressed)
         self.navigationItem.leftBarButtonItem = sortBooksButton
+    }
+    
+    func showSortActionSheet() {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let nameSortAction = UIAlertAction(title: "Sort by name",
+                                           style: .default) { _ in
+            self.nameSortActionTapHandler?()
+        }
+        let dateSortAction = UIAlertAction(title: "Sort by date",
+                                           style: .default) { _ in
+            self.dateSortActionTapHandler?()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel,
+                                         handler: nil)
+        actionSheet.addAction(nameSortAction)
+        actionSheet.addAction(dateSortAction)
+        actionSheet.addAction(cancelAction)
+        self.present(actionSheet, animated: true)
     }
     
     @objc func addBookButtonPressed() {

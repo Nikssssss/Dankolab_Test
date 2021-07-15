@@ -50,6 +50,8 @@ private extension BooksListPresenter {
         self.hookAddBookButtonTapHandler()
         self.hookSortBooksButtonTapHandler()
         self.hookDidSelectRowHandler()
+        self.hookNameSortActionHandler()
+        self.hookDateSortActionHandler()
     }
     
     func hookNumberOfRowsInSectionHandler() {
@@ -79,6 +81,7 @@ private extension BooksListPresenter {
                 let book = self.booksStorage.validBooks[indexPath.row]
                 cell.setBookName(book.name)
                 cell.setBookDate(self.mapDateToString(book.deadlineDate))
+                cell.setBookDateColor(.gray)
             default:
                 break
             }
@@ -115,7 +118,7 @@ private extension BooksListPresenter {
     
     func hookSortBooksButtonTapHandler() {
         self.booksListUI?.setSortBooksButtonTapHandler({ [weak self] in
-            
+            self?.booksListUI?.showSortTypes()
         })
     }
     
@@ -132,6 +135,22 @@ private extension BooksListPresenter {
             default:
                 break
             }
+        })
+    }
+    
+    func hookNameSortActionHandler() {
+        self.booksListUI?.setNameSortActionTapHandler({ [weak self] in
+            guard let self = self else { return }
+            self.booksStorage.setBooksSortingType(.name)
+            self.handleBooksLoading()
+        })
+    }
+    
+    func hookDateSortActionHandler() {
+        self.booksListUI?.setDateSortActionTapHandler({ [weak self] in
+            guard let self = self else { return }
+            self.booksStorage.setBooksSortingType(.date)
+            self.handleBooksLoading()
         })
     }
     

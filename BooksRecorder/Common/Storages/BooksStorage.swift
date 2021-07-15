@@ -8,6 +8,10 @@
 import Foundation
 import CoreData
 
+enum BooksSortingType {
+    case none, name, date
+}
+
 protocol IBooksStorage: AnyObject {
     var validBooks: [BookDto] { get }
     var overdueBooks: [BookDto] { get }
@@ -16,6 +20,7 @@ protocol IBooksStorage: AnyObject {
     func addBook(_ bookDto: BookDto) -> Bool
     func editBook(_ oldBookDto: BookDto, using editedBookDto: BookDto) -> Bool
     func removeBook(at row: Int)
+    func setBooksSortingType(_ sortingType: BooksSortingType)
 }
 
 final class BooksStorage: IBooksStorage {
@@ -23,7 +28,7 @@ final class BooksStorage: IBooksStorage {
         return self.books.compactMap { book in
             guard let bookName = book.name,
                   let deadlineDate = book.deadlineDate,
-                  self.getDay(from: deadlineDate) >= self.getDay(from: Date())
+                  self.isLess(deadlineDate, than: Date()) == false
             else { return nil }
             return BookDto(name: bookName, deadlineDate: deadlineDate)
         }
@@ -33,7 +38,7 @@ final class BooksStorage: IBooksStorage {
         return self.books.compactMap { book in
             guard let bookName = book.name,
                   let deadlineDate = book.deadlineDate,
-                  self.getDay(from: deadlineDate) < self.getDay(from: Date())
+                  self.isLess(deadlineDate, than: Date())
             else { return nil }
             return BookDto(name: bookName, deadlineDate: deadlineDate)
         }
@@ -47,15 +52,27 @@ final class BooksStorage: IBooksStorage {
     private let mainContext: NSManagedObjectContext
     
     private var books = [Book]()
+    private var booksSortingType: BooksSortingType
     
-    init() {
+    init(booksSortingType: BooksSortingType) {
         self.persistentContainer = NSPersistentContainer(name: "BooksRecorder")
         self.persistentContainer.loadPersistentStores { _, _ in }
         self.mainContext = self.persistentContainer.viewContext
+        self.booksSortingType = booksSortingType
     }
     
     func loadBooks() {
         let fetchRequest: NSFetchRequest<Book> = Book.fetchRequest()
+        switch self.booksSortingType {
+        case .name:
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Book.name),
+                                                  ascending: true)]
+        case .date:
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(Book.deadlineDate),
+                                                  ascending: true)]
+        case .none:
+            break
+        }
         self.books = (try? self.mainContext.fetch(fetchRequest)) ?? []
     }
     
@@ -90,6 +107,10 @@ final class BooksStorage: IBooksStorage {
         self.mainContext.delete(deletedBook)
         try? self.mainContext.save()
     }
+    
+    func setBooksSortingType(_ sortingType: BooksSortingType) {
+        self.booksSortingType = sortingType
+    }
 }
 
 private extension BooksStorage {
@@ -99,7 +120,11 @@ private extension BooksStorage {
         return try? self.mainContext.fetch(fetchRequest).first
     }
     
-    func getDay(from date: Date) -> Int {
-        return Calendar.current.dateComponents([.day], from: date).day ?? 0
+    func isLess(_ firstDate: Date, than secondDate: Date) -> Bool {
+        guard let difference = Calendar.current.dateComponents([.day],
+                                                               from: firstDate,
+                                                               to: secondDate).value(for: .day)
+        else { return true }
+        return difference > 0
     }
 }

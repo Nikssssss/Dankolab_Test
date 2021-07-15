@@ -16,6 +16,7 @@ protocol IDetailsUI: AnyObject {
     func setTextFieldTextDidChangeHandler(_ handler: ((String?) -> Void)?)
     func enableConfirmButton()
     func disableConfirmButton()
+    func clearNameTextField()
 }
 
 class DetailsUI: UIViewController {
@@ -52,6 +53,7 @@ extension DetailsUI: IDetailsUI {
                                        buttonTitle: buttonTitle,
                                        buttonTapHandler: buttonTapHandler)
         self.configureNavigationBar(screenTitle: screenTitle)
+        self.addHidingKeyboardTap()
     }
     
     func setTextFieldTextDidChangeHandler(_ handler: ((String?) -> Void)?) {
@@ -64,6 +66,10 @@ extension DetailsUI: IDetailsUI {
     
     func disableConfirmButton() {
         self.detailsView.disableConfirmButton()
+    }
+    
+    func clearNameTextField() {
+        self.detailsView.clearNameTextField()
     }
 }
 
@@ -80,5 +86,15 @@ private extension DetailsUI {
                                                        alpha: 1.0)
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
         self.navigationItem.title = screenTitle
+    }
+    
+    func addHidingKeyboardTap() {
+        let tap = UITapGestureRecognizer(target: self,
+                                         action: #selector(UIInputViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 }
