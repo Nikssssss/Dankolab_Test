@@ -93,9 +93,15 @@ private extension BooksListPresenter {
             guard let self = self else { return "" }
             switch section {
             case 0:
-                return self.booksStorage.overdueBooks.count > 0 ? "Overdue books" : ""
+                if self.booksStorage.overdueBooks.count > 0 {
+                    return NSLocalizedString("Overdue books", comment: "")
+                }
+                return ""
             case 1:
-                return self.booksStorage.validBooks.count > 0 ? "On time books" : ""
+                if self.booksStorage.validBooks.count > 0 {
+                    return NSLocalizedString("On time books", comment: "")
+                }
+                return ""
             default:
                 return ""
             }
@@ -105,7 +111,14 @@ private extension BooksListPresenter {
     func hookCellWillDeleteHandler() {
         self.booksListUI?.setCellWillDeleteHandler({ [weak self] indexPath in
             guard let self = self else { return }
-            self.booksStorage.removeBook(at: indexPath.row)
+            switch indexPath.section {
+            case 0:
+                self.booksStorage.removeOverdueBook(at: indexPath.row)
+            case 1:
+                self.booksStorage.removeValidBook(at: indexPath.row)
+            default:
+                break
+            }
             self.handleBooksLoading()
         })
     }

@@ -27,11 +27,11 @@ final class EditPresentingStrategy: IPresentingStrategy {
     }
     
     var screenTitle: String {
-        return "Edit info"
+        return NSLocalizedString("Edit info", comment: "")
     }
     
     var buttonTitle: String {
-        return "Edit"
+        return NSLocalizedString("Edit", comment: "")
     }
     
     var buttonTapHandler: ((BookViewModel) -> Void) {
@@ -46,8 +46,8 @@ final class EditPresentingStrategy: IPresentingStrategy {
             if isEdited {
                 self.navigator.bookDidFinishEditing()
             } else {
-                print("This book name already exists")
-                //TODO: show alert about the same name
+                let message = NSLocalizedString("The book with this name already exists", comment: "")
+                self.navigator.errorOcurred(with: message)
             }
         }
         return handler

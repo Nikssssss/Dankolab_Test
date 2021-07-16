@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F6082ACF26A1A216009AEC81 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6082ACE26A1A216009AEC81 /* SpinnerView.swift */; };
+		F6082AD326A1E42B009AEC81 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6082AD526A1E42B009AEC81 /* Localizable.strings */; };
+		F6082AD826A1FB0F009AEC81 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6082AD726A1FB0F009AEC81 /* AlertController.swift */; };
+		F6082ADB26A1FBEC009AEC81 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = F6082ADA26A1FBEC009AEC81 /* SwiftMessages */; };
 		F6B8C6FD269D771B00E1D687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */; };
 		F6B8C6FF269D771B00E1D687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */; };
 		F6B8C706269D771D00E1D687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B8C705269D771D00E1D687 /* Assets.xcassets */; };
@@ -45,6 +48,10 @@
 
 /* Begin PBXFileReference section */
 		F6082ACE26A1A216009AEC81 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		F6082AD026A1E390009AEC81 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F6082AD426A1E42B009AEC81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6082AD626A1E42F009AEC81 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6082AD726A1FB0F009AEC81 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		F6B8C6F9269D771B00E1D687 /* BooksRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B8C71C269D7C3900E1D687 /* SnapKit in Frameworks */,
+				F6082ADB26A1FBEC009AEC81 /* SwiftMessages in Frameworks */,
 				F6B8C72B269D847800E1D687 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +127,7 @@
 				F6B8C707269D771D00E1D687 /* LaunchScreen.storyboard */,
 				F6B8C70A269D771D00E1D687 /* Info.plist */,
 				F6B8C74B269DEECA00E1D687 /* BooksRecorder.xcdatamodeld */,
+				F6082AD526A1E42B009AEC81 /* Localizable.strings */,
 			);
 			path = BooksRecorder;
 			sourceTree = "<group>";
@@ -137,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				F6B8C727269D845500E1D687 /* DependencyContainer.swift */,
+				F6082AD726A1FB0F009AEC81 /* AlertController.swift */,
 				F6BA9EF2269F052300DC21E4 /* Views */,
 				F6B8C74E269DEF7200E1D687 /* Dto */,
 				F6B8C72C269DB68400E1D687 /* Storages */,
@@ -280,6 +290,7 @@
 			packageProductDependencies = (
 				F6B8C71B269D7C3900E1D687 /* SnapKit */,
 				F6B8C72A269D847800E1D687 /* Swinject */,
+				F6082ADA26A1FBEC009AEC81 /* SwiftMessages */,
 			);
 			productName = BooksRecorder;
 			productReference = F6B8C6F9269D771B00E1D687 /* BooksRecorder.app */;
@@ -306,11 +317,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F6B8C6F0269D771B00E1D687;
 			packageReferences = (
 				F6B8C71A269D7C3900E1D687 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F6B8C729269D847800E1D687 /* XCRemoteSwiftPackageReference "Swinject" */,
+				F6082AD926A1FBEC009AEC81 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 			);
 			productRefGroup = F6B8C6FA269D771B00E1D687 /* Products */;
 			projectDirPath = "";
@@ -327,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6B8C709269D771D00E1D687 /* LaunchScreen.storyboard in Resources */,
+				F6082AD326A1E42B009AEC81 /* Localizable.strings in Resources */,
 				F6B8C706269D771D00E1D687 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +361,7 @@
 				F6BA9EE5269EFB1F00DC21E4 /* DetailsPresenter.swift in Sources */,
 				F6BA9EEA269EFD5F00DC21E4 /* IPresentingStrategy.swift in Sources */,
 				F6B8C721269D82B600E1D687 /* ModuleNavigationItem.swift in Sources */,
+				F6082AD826A1FB0F009AEC81 /* AlertController.swift in Sources */,
 				F6B8C750269DEF8600E1D687 /* BookDto.swift in Sources */,
 				F6B8C740269DD7BA00E1D687 /* BooksListPresenter.swift in Sources */,
 				F6BA9EE3269EFB1100DC21E4 /* DetailsView.swift in Sources */,
@@ -374,10 +389,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F6082AD526A1E42B009AEC81 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6082AD426A1E42B009AEC81 /* en */,
+				F6082AD626A1E42F009AEC81 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F6B8C707269D771D00E1D687 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F6B8C708269D771D00E1D687 /* Base */,
+				F6082AD026A1E390009AEC81 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -389,6 +414,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -450,6 +476,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -563,6 +590,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F6082AD926A1FBEC009AEC81 /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.3;
+			};
+		};
 		F6B8C71A269D7C3900E1D687 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -582,6 +617,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F6082ADA26A1FBEC009AEC81 /* SwiftMessages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6082AD926A1FBEC009AEC81 /* XCRemoteSwiftPackageReference "SwiftMessages" */;
+			productName = SwiftMessages;
+		};
 		F6B8C71B269D7C3900E1D687 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F6B8C71A269D7C3900E1D687 /* XCRemoteSwiftPackageReference "SnapKit" */;

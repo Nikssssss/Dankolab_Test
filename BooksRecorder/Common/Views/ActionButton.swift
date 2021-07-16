@@ -39,6 +39,7 @@ class ActionButton: UIButton {
         self.setTitleColor(.white, for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
         self.layer.cornerRadius = 10
+        self.isEnabled = true
     }
     
     private func enableShadows() {

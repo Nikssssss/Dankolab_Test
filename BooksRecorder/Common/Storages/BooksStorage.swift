@@ -19,7 +19,8 @@ protocol IBooksStorage: AnyObject {
     func loadBooks()
     func addBook(_ bookDto: BookDto) -> Bool
     func editBook(_ oldBookDto: BookDto, using editedBookDto: BookDto) -> Bool
-    func removeBook(at row: Int)
+    func removeValidBook(at row: Int)
+    func removeOverdueBook(at row: Int)
     func setBooksSortingType(_ sortingType: BooksSortingType)
 }
 
@@ -99,13 +100,12 @@ final class BooksStorage: IBooksStorage {
         return true
     }
     
-    func removeBook(at row: Int) {
-        guard row >= 0, row < self.books.count,
-              let deletedBookName = self.books[row].name,
-              let deletedBook = self.getBookIfExists(with: deletedBookName)
-        else { return }
-        self.mainContext.delete(deletedBook)
-        try? self.mainContext.save()
+    func removeValidBook(at row: Int) {
+        self.removeBook(at: row, in: self.validBooks)
+    }
+    
+    func removeOverdueBook(at row: Int) {
+        self.removeBook(at: row, in: self.overdueBooks)
     }
     
     func setBooksSortingType(_ sortingType: BooksSortingType) {
@@ -126,5 +126,14 @@ private extension BooksStorage {
                                                                to: secondDate).value(for: .day)
         else { return true }
         return difference > 0
+    }
+    
+    func removeBook(at row: Int, in booksList: [BookDto]) {
+        guard row >= 0, row < booksList.count else { return }
+        let deletedBookName = booksList[row].name
+        guard let deletedBook = self.getBookIfExists(with: deletedBookName)
+        else { return }
+        self.mainContext.delete(deletedBook)
+        try? self.mainContext.save()
     }
 }

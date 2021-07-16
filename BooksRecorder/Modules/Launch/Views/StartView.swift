@@ -78,7 +78,7 @@ private extension StartView {
             make.right.equalToSuperview().offset(-30)
             make.height.equalTo(50)
         }
-        self.startButton.setTitle("Start", for: .normal)
+        self.startButton.setTitle(NSLocalizedString("Start", comment: ""), for: .normal)
         self.startButton.addTarget(self,
                                    action: #selector(self.startButtonPressed),
                                    for: .touchUpInside)

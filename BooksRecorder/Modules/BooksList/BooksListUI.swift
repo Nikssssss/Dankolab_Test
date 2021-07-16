@@ -133,7 +133,7 @@ private extension BooksListUI {
                                                        blue: 248 / 255.0,
                                                        alpha: 1.0)
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
-        self.navigationItem.title = "Books list"
+        self.navigationItem.title = NSLocalizedString("Books list", comment: "")
         self.configureAddingBookBarButton()
         self.configureSortingBooksButton()
     }
@@ -156,15 +156,15 @@ private extension BooksListUI {
     
     func showSortActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let nameSortAction = UIAlertAction(title: "Sort by name",
+        let nameSortAction = UIAlertAction(title: NSLocalizedString("Sort by name", comment: ""),
                                            style: .default) { _ in
             self.nameSortActionTapHandler?()
         }
-        let dateSortAction = UIAlertAction(title: "Sort by date",
+        let dateSortAction = UIAlertAction(title: NSLocalizedString("Sort by date", comment: ""),
                                            style: .default) { _ in
             self.dateSortActionTapHandler?()
         }
-        let cancelAction = UIAlertAction(title: "Cancel",
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
                                          style: .cancel,
                                          handler: nil)
         actionSheet.addAction(nameSortAction)

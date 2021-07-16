@@ -62,7 +62,7 @@ private extension DetailsView {
             make.height.equalTo(45)
         }
         self.bookNameTextField.setLeftPaddingPoints(18)
-        self.bookNameTextField.placeholder = "Book name"
+        self.bookNameTextField.placeholder = NSLocalizedString("Book name", comment: "")
         self.bookNameTextField.text = bookName
         self.bookNameTextField.layer.borderWidth = 0.5
         self.bookNameTextField.layer.borderColor = UIColor.lightGray.cgColor
@@ -79,12 +79,10 @@ private extension DetailsView {
         }
         self.deadlineDatePicker.datePickerMode = .date
         self.deadlineDatePicker.preferredDatePickerStyle = .wheels
-        let currentDate = Calendar.current.date(byAdding: .day,
-                                                value: -2,
-                                                to: Date())
+        let currentDate = Date()
         let threeMonthsAgoDate = Calendar.current.date(byAdding: .month,
                                                       value: 3,
-                                                      to: currentDate!)
+                                                      to: currentDate)
         self.deadlineDatePicker.minimumDate = currentDate
         self.deadlineDatePicker.maximumDate = threeMonthsAgoDate
         if let deadlineDate = deadlineDate {

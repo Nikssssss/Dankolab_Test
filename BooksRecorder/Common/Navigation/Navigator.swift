@@ -15,10 +15,16 @@ protocol INavigator: AnyObject {
     func bookWasAdded()
     func addButtonPressedAtBooksList()
     func bookPressedAtBooksList(bookDto: BookDto)
+    func errorOcurred(with message: String)
 }
 
 final class Navigator: INavigator {    
     private let moduleNavigator = ModuleNavigator()
+    private var alertController: IAlertController?
+    
+    func setAlertController(_ alertController: IAlertController) {
+        self.alertController = alertController
+    }
     
     func launch() -> ModuleNavigationItem? {
         guard let launchNavigationItem = LaunchAssembly.makeModule()
@@ -50,6 +56,10 @@ final class Navigator: INavigator {
         guard let detailsNavigationItem = DetailsAssembly.makeModule(bookDto: bookDto)
         else { return }
         self.moduleNavigator.pushToMain(moduleNavigationItem: detailsNavigationItem)
+    }
+    
+    func errorOcurred(with message: String) {
+        self.alertController?.showErrorAlert(message: message)
     }
 }
 

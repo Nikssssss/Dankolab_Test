@@ -27,7 +27,7 @@ class BooksListView: UIView {
     
     func enableEmptyListView() {
         let emptyListLabel = UILabel()
-        emptyListLabel.text = "Empty list"
+        emptyListLabel.text = NSLocalizedString("Empty list", comment: "")
         emptyListLabel.textColor = UIColor(red: 216 / 255.0,
                                            green: 216 / 255.0,
                                            blue: 216 / 255.0,

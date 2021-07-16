@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  BooksRecorder
+
+  Created by Никита Гусев on 16.07.2021.
+  
+*/
+
+"Start" = "Start";
+"Books list" = "Books list";
+"Empty list" = "Empty list";
+"Overdue books" = "Overdue books";
+"On time books" = "On time books";
+"Sort by name" = "Sort by name";
+"Sort by date" = "Sort by date";
+"Cancel" = "Cancel";
+"Add new book" = "Add new book";
+"Book name" = "Book name";
+"Add" = "Add";
+"Edit info" = "Edit info";
+"Edit" = "Edit";
+"Error" = "Error";
+"Okay" = "Okay";
+"The book with this name already exists" = "The book with this name already exists";

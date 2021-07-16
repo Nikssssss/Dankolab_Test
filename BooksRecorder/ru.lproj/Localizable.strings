@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  BooksRecorder
+
+  Created by Никита Гусев on 16.07.2021.
+  
+*/
+
+"Start" = "Начать";
+"Books list" = "Список книг";
+"Empty list" = "Пустой список";
+"Overdue books" = "Просроченные книги";
+"On time books" = "Действительные книги";
+"Sort by name" = "Сортировать по названию";
+"Sort by date" = "Сортировать по дате";
+"Cancel" = "Отменить";
+"Add new book" = "Добавить";
+"Book name" = "Название книги";
+"Add" = "Добавить";
+"Edit info" = "Редактировать";
+"Edit" = "Редактировать";
+"Error" = "Ошибка";
+"Okay" = "Хорошо";
+"The book with this name already exists" = "Книга с таким названием уже существует";
