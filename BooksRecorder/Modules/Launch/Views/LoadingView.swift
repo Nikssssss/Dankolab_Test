@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class LoadingView: UIView {
-    private let spinnerImageView = UIImageView()
+    private let spinnerView = SpinnerView()
     
     func configureView() {
         self.backgroundColor = .white
@@ -18,29 +18,20 @@ class LoadingView: UIView {
     }
     
     func startAnimating() {
-        self.startRotatingSpinner()
+        self.spinnerView.startAnimating()
     }
 }
 
 private extension LoadingView {
     func addSubviews() {
-        self.addSubview(self.spinnerImageView)
+        self.addSubview(self.spinnerView)
     }
     
     func configureSpinnerView() {
-        self.spinnerImageView.image = UIImage(named: "spinner")
-        self.spinnerImageView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.height.width.equalTo(100)
+        self.spinnerView.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+            make.width.equalTo(100)
+            make.height.equalTo(100)
         }
-    }
-    
-    func startRotatingSpinner() {
-        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        rotateAnimation.fromValue = 0.0
-        rotateAnimation.toValue = CGFloat(.pi * 2.0)
-        rotateAnimation.duration = 2
-        rotateAnimation.repeatCount = .infinity
-        self.spinnerImageView.layer.add(rotateAnimation, forKey: nil)
     }
 }

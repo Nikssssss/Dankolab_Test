@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6082ACF26A1A216009AEC81 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6082ACE26A1A216009AEC81 /* SpinnerView.swift */; };
 		F6B8C6FD269D771B00E1D687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */; };
 		F6B8C6FF269D771B00E1D687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */; };
 		F6B8C706269D771D00E1D687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B8C705269D771D00E1D687 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F6082ACE26A1A216009AEC81 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		F6B8C6F9269D771B00E1D687 /* BooksRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			children = (
 				F6B8C715269D798000E1D687 /* LoadingView.swift */,
 				F6B8C717269D799100E1D687 /* StartView.swift */,
+				F6082ACE26A1A216009AEC81 /* SpinnerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				F6B8C714269D795A00E1D687 /* LaunchUI.swift in Sources */,
 				F6B8C718269D799100E1D687 /* StartView.swift in Sources */,
 				F6B8C747269DED8500E1D687 /* BooksStorage.swift in Sources */,
+				F6082ACF26A1A216009AEC81 /* SpinnerView.swift in Sources */,
 				F6B8C742269DD7C600E1D687 /* BooksListAssembly.swift in Sources */,
 				F6B8C716269D798000E1D687 /* LoadingView.swift in Sources */,
 				F6BA9EE1269EFAFD00DC21E4 /* DetailsUI.swift in Sources */,
