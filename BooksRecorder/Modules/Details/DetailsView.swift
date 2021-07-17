@@ -19,7 +19,7 @@ class DetailsView: UIView {
     func configureView(bookViewModel: BookViewModel,
                        buttonTitle: String,
                        buttonTapHandler: @escaping ((BookViewModel) -> Void)) {
-        self.backgroundColor = .white
+        self.backgroundColor = Constants.viewBackgroundColor
         self.addSubviews()
         self.configureBookNameTextField(bookName: bookViewModel.bookName)
         self.configureDeadlineDatePicker(deadlineDate: bookViewModel.deadlineDate)
@@ -62,14 +62,21 @@ private extension DetailsView {
             make.height.equalTo(45)
         }
         self.bookNameTextField.setLeftPaddingPoints(18)
-        self.bookNameTextField.placeholder = NSLocalizedString("Book name", comment: "")
         self.bookNameTextField.text = bookName
-        self.bookNameTextField.layer.borderWidth = 0.5
-        self.bookNameTextField.layer.borderColor = UIColor.lightGray.cgColor
-        self.bookNameTextField.layer.cornerRadius = 10
+        self.bookNameTextField.layer.borderWidth = Constants.nameTextFieldBorderWidth
+        self.bookNameTextField.layer.borderColor = Constants.nameTextFieldBorderColor
+        self.bookNameTextField.layer.cornerRadius = Constants.nameTextFieldCornerRadius
         self.bookNameTextField.delegate = self
         self.bookNameTextField.autocorrectionType = .no
         self.bookNameTextField.autocapitalizationType = .none
+        self.bookNameTextField.backgroundColor = Constants.nameTextFieldBackgroundColor
+        let placeholderText = NSLocalizedString(LocalizationConstants.bookName,
+                                                comment: "")
+        let attributes: [NSAttributedString.Key : Any] = [.foregroundColor: Constants.nameTextFieldPlaceholderColor]
+        let attributedPlaceholder = NSAttributedString(string: placeholderText,
+                                                       attributes: attributes)
+        self.bookNameTextField.attributedPlaceholder = attributedPlaceholder
+        self.bookNameTextField.textColor = Constants.nameTextFieldTextColor
     }
     
     func configureDeadlineDatePicker(deadlineDate: Date?) {
@@ -91,7 +98,7 @@ private extension DetailsView {
     }
     
     func configureConfirmButton(titled title: String) {
-        self.makeConfirmButtonConstraints(bottomOffset: -50)
+        self.makeConfirmButtonConstraints(bottomOffset: Constants.buttonBottomOffset)
         self.confirmButton.setTitle(title, for: .normal)
         self.confirmButton.addTarget(self,
                                    action: #selector(self.confirmButtonPressed),
@@ -105,7 +112,7 @@ private extension DetailsView {
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-30)
-            make.height.equalTo(50)
+            make.height.equalTo(Constants.buttonHeight)
         }
     }
     
@@ -123,9 +130,12 @@ private extension DetailsView {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
                                 as? NSValue)?.cgRectValue {
-            if self.confirmButton.frame.origin.y == (self.frame.height - 50 - 50) { // - offset - button.height
-                self.confirmButton.frame.origin.y -= (keyboardSize.height - 25)
-                self.makeConfirmButtonConstraints(bottomOffset: -50 - (keyboardSize.height - 25))
+            let buttonY = self.frame.height + Constants.buttonBottomOffset - Constants.buttonHeight
+            if self.confirmButton.frame.origin.y == buttonY {
+                let raiseOffset = Constants.buttonHeight / 2
+                self.confirmButton.frame.origin.y -= (keyboardSize.height - raiseOffset)
+                let buttonBottom = Constants.buttonBottomOffset - (keyboardSize.height - raiseOffset)
+                self.makeConfirmButtonConstraints(bottomOffset: buttonBottom)
             }
         }
     }
@@ -133,9 +143,12 @@ private extension DetailsView {
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
                                 as? NSValue)?.cgRectValue {
-            if self.confirmButton.frame.origin.y == (self.frame.height - (keyboardSize.height + (50 + 50 - 25))) {
-                self.confirmButton.frame.origin.y += (keyboardSize.height - 25)
-                self.makeConfirmButtonConstraints(bottomOffset: -50)
+            let raiseOffset = Constants.buttonHeight / 2
+            let yOffset = keyboardSize.height + (Constants.buttonHeight - Constants.buttonBottomOffset - raiseOffset)
+            let buttonY = self.frame.height - yOffset
+            if self.confirmButton.frame.origin.y == buttonY {
+                self.confirmButton.frame.origin.y += (keyboardSize.height - raiseOffset)
+                self.makeConfirmButtonConstraints(bottomOffset: Constants.buttonBottomOffset)
             }
         }
     }
@@ -145,4 +158,16 @@ private extension DetailsView {
                                           deadlineDate: self.deadlineDatePicker.date)
         self.confirmButtonTapHandler?(bookViewModel)
     }
+}
+
+private struct Constants {
+    static let viewBackgroundColor = UIColor.white
+    static let nameTextFieldBorderWidth: CGFloat = 0.5
+    static let nameTextFieldBorderColor = UIColor.lightGray.cgColor
+    static let nameTextFieldCornerRadius: CGFloat = 10
+    static let nameTextFieldPlaceholderColor = UIColor.lightGray
+    static let nameTextFieldTextColor = UIColor.black
+    static let nameTextFieldBackgroundColor = UIColor.white
+    static let buttonBottomOffset: CGFloat = -50
+    static let buttonHeight: CGFloat = 50.0
 }

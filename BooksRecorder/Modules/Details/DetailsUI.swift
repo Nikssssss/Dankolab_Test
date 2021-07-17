@@ -80,10 +80,7 @@ private extension DetailsUI {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         let navigationAppearance = UINavigationBarAppearance()
-        navigationAppearance.backgroundColor = UIColor(red: 248 / 255.0,
-                                                       green: 248 / 255.0,
-                                                       blue: 248 / 255.0,
-                                                       alpha: 1.0)
+        navigationAppearance.backgroundColor = Constants.navigationBarBackgroundColor
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
         self.navigationItem.title = screenTitle
     }
@@ -97,4 +94,11 @@ private extension DetailsUI {
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
+}
+
+private struct Constants {
+    static let navigationBarBackgroundColor = UIColor(red: 248 / 255.0,
+                                                      green: 248 / 255.0,
+                                                      blue: 248 / 255.0,
+                                                      alpha: 1.0)
 }

@@ -12,7 +12,7 @@ class LoadingView: UIView {
     private let spinnerView = SpinnerView()
     
     func configureView() {
-        self.backgroundColor = .white
+        self.backgroundColor = Constants.viewBackgroundColor
         self.addSubviews()
         self.configureSpinnerView()
     }
@@ -34,4 +34,8 @@ private extension LoadingView {
             make.height.equalTo(100)
         }
     }
+}
+
+private struct Constants {
+    static let viewBackgroundColor = UIColor.white
 }

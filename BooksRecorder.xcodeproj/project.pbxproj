@@ -11,6 +11,7 @@
 		F6082AD326A1E42B009AEC81 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6082AD526A1E42B009AEC81 /* Localizable.strings */; };
 		F6082AD826A1FB0F009AEC81 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6082AD726A1FB0F009AEC81 /* AlertController.swift */; };
 		F6082ADB26A1FBEC009AEC81 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = F6082ADA26A1FBEC009AEC81 /* SwiftMessages */; };
+		F6082ADD26A20AB2009AEC81 /* LocalizationConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6082ADC26A20AB2009AEC81 /* LocalizationConstants.swift */; };
 		F6B8C6FD269D771B00E1D687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */; };
 		F6B8C6FF269D771B00E1D687 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */; };
 		F6B8C706269D771D00E1D687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B8C705269D771D00E1D687 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		F6082AD426A1E42B009AEC81 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F6082AD626A1E42F009AEC81 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F6082AD726A1FB0F009AEC81 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		F6082ADC26A20AB2009AEC81 /* LocalizationConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationConstants.swift; sourceTree = "<group>"; };
 		F6B8C6F9269D771B00E1D687 /* BooksRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6B8C6FC269D771B00E1D687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6B8C6FE269D771B00E1D687 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				F6B8C727269D845500E1D687 /* DependencyContainer.swift */,
 				F6082AD726A1FB0F009AEC81 /* AlertController.swift */,
+				F6082ADC26A20AB2009AEC81 /* LocalizationConstants.swift */,
 				F6BA9EF2269F052300DC21E4 /* Views */,
 				F6B8C74E269DEF7200E1D687 /* Dto */,
 				F6B8C72C269DB68400E1D687 /* Storages */,
@@ -380,6 +383,7 @@
 				F6B8C725269D830100E1D687 /* LaunchAssembly.swift in Sources */,
 				F6BA9EF8269F1BF500DC21E4 /* BookViewModel.swift in Sources */,
 				F6BA9EEC269EFD8400DC21E4 /* EditStrategy.swift in Sources */,
+				F6082ADD26A20AB2009AEC81 /* LocalizationConstants.swift in Sources */,
 				F6B8C6FF269D771B00E1D687 /* SceneDelegate.swift in Sources */,
 				F6BA9EF1269F01B900DC21E4 /* UITextField + Extension.swift in Sources */,
 				F6BA9EF4269F053B00DC21E4 /* ActionButton.swift in Sources */,

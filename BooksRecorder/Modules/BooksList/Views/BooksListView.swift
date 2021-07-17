@@ -27,13 +27,12 @@ class BooksListView: UIView {
     
     func enableEmptyListView() {
         let emptyListLabel = UILabel()
-        emptyListLabel.text = NSLocalizedString("Empty list", comment: "")
-        emptyListLabel.textColor = UIColor(red: 216 / 255.0,
-                                           green: 216 / 255.0,
-                                           blue: 216 / 255.0,
-                                           alpha: 1.0)
-        emptyListLabel.font = .systemFont(ofSize: 24, weight: .bold)
+        emptyListLabel.text = NSLocalizedString(LocalizationConstants.emptyList,
+                                                comment: "")
+        emptyListLabel.textColor = Constants.emptyLabelTextColor
+        emptyListLabel.font = Constants.emptyLabelFont
         emptyListLabel.textAlignment = .center
+        emptyListLabel.backgroundColor = Constants.emptyLabelBackgroundColor
         self.booksTableView.backgroundView = emptyListLabel
     }
     
@@ -45,9 +44,9 @@ class BooksListView: UIView {
 extension BooksListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let headerView = view as? UITableViewHeaderFooterView else { return }
-        headerView.tintColor = .black
-        headerView.backgroundConfiguration?.backgroundColor = .white
-        headerView.textLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+        headerView.tintColor = Constants.headerTintColor
+        headerView.backgroundConfiguration?.backgroundColor = Constants.headerBackgroundColor
+        headerView.textLabel?.font = Constants.headerFont
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -103,6 +102,19 @@ private extension BooksListView {
         self.booksTableView.dataSource = self
         self.booksTableView.delegate = self
         self.booksTableView.tableFooterView = UIView()
-        self.booksTableView.backgroundColor = .white
+        self.booksTableView.backgroundColor = Constants.tableBakgroundColor
     }
+}
+
+private struct Constants {
+    static let emptyLabelTextColor = UIColor(red: 216 / 255.0,
+                                             green: 216 / 255.0,
+                                             blue: 216 / 255.0,
+                                             alpha: 1.0)
+    static let emptyLabelFont = UIFont.systemFont(ofSize: 24, weight: .bold)
+    static let emptyLabelBackgroundColor = UIColor.white
+    static let headerTintColor = UIColor.black
+    static let headerBackgroundColor = UIColor.white
+    static let headerFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+    static let tableBakgroundColor = UIColor.white
 }

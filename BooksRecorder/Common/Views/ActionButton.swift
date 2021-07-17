@@ -20,33 +20,27 @@ class ActionButton: UIButton {
     override var isEnabled: Bool {
         didSet {
             if self.isEnabled {
-                self.backgroundColor = UIColor(red: 7 / 255.0,
-                                               green: 123 / 255.0,
-                                               blue: 249 / 255.0,
-                                               alpha: 1.0)
+                self.backgroundColor = Constants.enabledBackgroundColor
                 self.enableShadows()
             } else {
-                self.backgroundColor = UIColor(red: 201 / 255.0,
-                                               green: 201 / 255.0,
-                                               blue: 204 / 255.0,
-                                               alpha: 1.0)
+                self.backgroundColor = Constants.disabledBackgroundColor
                 self.disableShadows()
             }
         }
     }
     
     private func configureView() {
-        self.setTitleColor(.white, for: .normal)
-        self.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        self.layer.cornerRadius = 10
+        self.setTitleColor(Constants.titleColor, for: .normal)
+        self.titleLabel?.font = Constants.titleFont
+        self.layer.cornerRadius = Constants.cornerRadius
         self.isEnabled = true
     }
     
     private func enableShadows() {
-        self.layer.shadowColor = UIColor.darkGray.cgColor
-        self.layer.shadowOffset = CGSize(width: 1, height: 2)
-        self.layer.shadowRadius = 3
-        self.layer.shadowOpacity = 1
+        self.layer.shadowColor = Constants.shadowColor
+        self.layer.shadowOffset = Constants.shadowOffset
+        self.layer.shadowRadius = Constants.shadowRadius
+        self.layer.shadowOpacity = Constants.shadowOpacity
     }
     
     private func disableShadows() {
@@ -54,4 +48,23 @@ class ActionButton: UIButton {
         self.layer.shadowRadius = 0
         self.layer.shadowOpacity = 0
     }
+}
+
+private struct Constants {
+    static let enabledBackgroundColor = UIColor(red: 7 / 255.0,
+                                         green: 123 / 255.0,
+                                         blue: 249 / 255.0,
+                                         alpha: 1.0)
+    static let disabledBackgroundColor = UIColor(red: 201 / 255.0,
+                                          green: 201 / 255.0,
+                                          blue: 204 / 255.0,
+                                          alpha: 1.0)
+    static let titleColor = UIColor.white
+    static let titleFont = UIFont.systemFont(ofSize: 16, weight: .bold)
+    static let cornerRadius: CGFloat = 10
+    
+    static let shadowColor = UIColor.darkGray.cgColor
+    static let shadowOffset = CGSize(width: 1, height: 2)
+    static let shadowRadius: CGFloat = 3
+    static let shadowOpacity: Float = 1
 }

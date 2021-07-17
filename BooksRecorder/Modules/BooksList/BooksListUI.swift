@@ -128,12 +128,10 @@ private extension BooksListUI {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         let navigationAppearance = UINavigationBarAppearance()
-        navigationAppearance.backgroundColor = UIColor(red: 248 / 255.0,
-                                                       green: 248 / 255.0,
-                                                       blue: 248 / 255.0,
-                                                       alpha: 1.0)
+        navigationAppearance.backgroundColor = Constants.navigationBarBackgroundColor
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
-        self.navigationItem.title = NSLocalizedString("Books list", comment: "")
+        self.navigationItem.title = NSLocalizedString(LocalizationConstants.booksList,
+                                                      comment: "")
         self.configureAddingBookBarButton()
         self.configureSortingBooksButton()
     }
@@ -156,15 +154,18 @@ private extension BooksListUI {
     
     func showSortActionSheet() {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let nameSortAction = UIAlertAction(title: NSLocalizedString("Sort by name", comment: ""),
+        let nameSortAction = UIAlertAction(title: NSLocalizedString(LocalizationConstants.sortByName,
+                                                                    comment: ""),
                                            style: .default) { _ in
             self.nameSortActionTapHandler?()
         }
-        let dateSortAction = UIAlertAction(title: NSLocalizedString("Sort by date", comment: ""),
+        let dateSortAction = UIAlertAction(title: NSLocalizedString(LocalizationConstants.sortByDate,
+                                                                    comment: ""),
                                            style: .default) { _ in
             self.dateSortActionTapHandler?()
         }
-        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""),
+        let cancelAction = UIAlertAction(title: NSLocalizedString(LocalizationConstants.cancel,
+                                                                  comment: ""),
                                          style: .cancel,
                                          handler: nil)
         actionSheet.addAction(nameSortAction)
@@ -180,4 +181,11 @@ private extension BooksListUI {
     @objc func sortBooksButtonPressed() {
         self.sortBooksButtonTapHandler?()
     }
+}
+
+private struct Constants {
+    static let navigationBarBackgroundColor = UIColor(red: 248 / 255.0,
+                                                      green: 248 / 255.0,
+                                                      blue: 248 / 255.0,
+                                                      alpha: 1.0)
 }

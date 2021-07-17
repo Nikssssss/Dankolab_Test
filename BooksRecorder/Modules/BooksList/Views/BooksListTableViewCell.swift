@@ -18,12 +18,18 @@ class BooksListTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: BooksListTableViewCell.identifier)
-        self.accessoryType = .disclosureIndicator
-        self.detailTextLabel?.textColor = .gray
+        self.configureView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    private func configureView() {
+        self.backgroundColor = Constants.cellBackgroundColor
+        self.accessoryType = .disclosureIndicator
+        self.detailTextLabel?.textColor = Constants.detailsTextColor
+        self.textLabel?.textColor = Constants.mainTextColor
     }
 }
 
@@ -39,4 +45,10 @@ extension BooksListTableViewCell: IBooksListTableCell {
     func setBookDateColor(_ color: UIColor) {
         self.detailTextLabel?.textColor = color
     }
+}
+
+private struct Constants {
+    static let cellBackgroundColor = UIColor.white
+    static let mainTextColor = UIColor.black
+    static let detailsTextColor = UIColor.gray
 }

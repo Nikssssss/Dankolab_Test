@@ -34,8 +34,10 @@ private extension AlertController {
     }
     
     func createErrorView(message: String) -> MessageView {
-        let title = NSLocalizedString("Error", comment: "")
-        let buttonTitle = NSLocalizedString("Okay", comment: "")
+        let title = NSLocalizedString(LocalizationConstants.error,
+                                      comment: "")
+        let buttonTitle = NSLocalizedString(LocalizationConstants.okay,
+                                            comment: "")
         let view = MessageView.viewFromNib(layout: .centeredView)
         view.configureTheme(backgroundColor: .white, foregroundColor: .darkGray)
         view.configureDropShadow()

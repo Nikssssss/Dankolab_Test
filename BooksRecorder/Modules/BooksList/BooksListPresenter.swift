@@ -73,15 +73,13 @@ private extension BooksListPresenter {
             guard let self = self else { return }
             switch indexPath.section {
             case 0:
-                let book = self.booksStorage.overdueBooks[indexPath.row]
-                cell.setBookName(book.name)
-                cell.setBookDate(self.mapDateToString(book.deadlineDate))
-                cell.setBookDateColor(.red)
+                self.renderCell(cell, at: indexPath,
+                                using: self.booksStorage.overdueBooks,
+                                withDateColor: Constants.overdueDateColor)
             case 1:
-                let book = self.booksStorage.validBooks[indexPath.row]
-                cell.setBookName(book.name)
-                cell.setBookDate(self.mapDateToString(book.deadlineDate))
-                cell.setBookDateColor(.gray)
+                self.renderCell(cell, at: indexPath,
+                                using: self.booksStorage.validBooks,
+                                withDateColor: Constants.validDateColor)
             default:
                 break
             }
@@ -94,12 +92,14 @@ private extension BooksListPresenter {
             switch section {
             case 0:
                 if self.booksStorage.overdueBooks.count > 0 {
-                    return NSLocalizedString("Overdue books", comment: "")
+                    return NSLocalizedString(LocalizationConstants.overdueBooks,
+                                             comment: "")
                 }
                 return ""
             case 1:
                 if self.booksStorage.validBooks.count > 0 {
-                    return NSLocalizedString("On time books", comment: "")
+                    return NSLocalizedString(LocalizationConstants.validBooks,
+                                             comment: "")
                 }
                 return ""
             default:
@@ -167,6 +167,16 @@ private extension BooksListPresenter {
         })
     }
     
+    func renderCell(_ cell: IBooksListTableCell,
+                    at indexPath: IndexPath,
+                    using books: [BookDto],
+                    withDateColor color: UIColor) {
+        let book = books[indexPath.row]
+        cell.setBookName(book.name)
+        cell.setBookDate(self.mapDateToString(book.deadlineDate))
+        cell.setBookDateColor(color)
+    }
+    
     func mapDateToString(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
@@ -182,4 +192,9 @@ private extension BooksListPresenter {
             self.booksListUI?.disableEmptyListView()
         }
     }
+}
+
+private struct Constants {
+    static let overdueDateColor = UIColor.red
+    static let validDateColor = UIColor.gray
 }

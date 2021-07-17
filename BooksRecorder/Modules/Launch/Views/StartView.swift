@@ -16,7 +16,7 @@ class StartView: UIView {
     private let startButton = ActionButton()
     
     func configureView() {
-        self.backgroundColor = .white
+        self.backgroundColor = Constants.viewBackgroundColor
         self.addSubviews()
         self.configureContainerView()
         self.configureTitleView()
@@ -55,7 +55,7 @@ private extension StartView {
         self.containerView.axis = .vertical
         self.containerView.alignment = .center
         self.containerView.distribution = .equalSpacing
-        self.containerView.spacing = 44
+        self.containerView.spacing = Constants.containerInteritemSpacing
         self.containerView.addArrangedSubview(self.titleView)
         self.containerView.addArrangedSubview(self.bookImageView)
     }
@@ -78,7 +78,8 @@ private extension StartView {
             make.right.equalToSuperview().offset(-30)
             make.height.equalTo(50)
         }
-        self.startButton.setTitle(NSLocalizedString("Start", comment: ""), for: .normal)
+        self.startButton.setTitle(NSLocalizedString(LocalizationConstants.start,
+                                                    comment: ""), for: .normal)
         self.startButton.addTarget(self,
                                    action: #selector(self.startButtonPressed),
                                    for: .touchUpInside)
@@ -88,4 +89,9 @@ private extension StartView {
     @objc func startButtonPressed() {
         self.startButtonTapHandler?()
     }
+}
+
+private struct Constants {
+    static let viewBackgroundColor = UIColor.white
+    static let containerInteritemSpacing: CGFloat = 44
 }

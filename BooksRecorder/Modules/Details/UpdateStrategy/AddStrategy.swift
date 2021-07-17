@@ -24,11 +24,13 @@ final class AddPresentingStrategy: IPresentingStrategy {
     }
     
     var screenTitle: String {
-        return NSLocalizedString("Add new book", comment: "")
+        return NSLocalizedString(LocalizationConstants.addBook,
+                                 comment: "")
     }
     
     var buttonTitle: String {
-        return NSLocalizedString("Add", comment: "")
+        return NSLocalizedString(LocalizationConstants.add,
+                                 comment: "")
     }
     
     var buttonTapHandler: ((BookViewModel) -> Void) {
@@ -43,7 +45,8 @@ final class AddPresentingStrategy: IPresentingStrategy {
             if isAdded {
                 self.navigator.bookWasAdded()
             } else {
-                let message = NSLocalizedString("The book with this name already exists", comment: "")
+                let message = NSLocalizedString(LocalizationConstants.invalidNameError,
+                                                comment: "")
                 self.navigator.errorOcurred(with: message)
             }
         }

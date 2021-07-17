@@ -45,14 +45,14 @@ private extension LaunchPresenter {
     }
     
     func handleFinishingLaunch() {
-        let delay = Double.random(in: 2...5)
+        let delay = Double.random(in: Constants.delayRange)
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             self?.navigator.launchDidFinish()
         }
     }
     
     func showStartView() {
-        let delay = Double.random(in: 2...5)
+        let delay = Double.random(in: Constants.delayRange)
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             guard let self = self else { return }
             self.launchUI?.setStartScreenView()
@@ -61,4 +61,8 @@ private extension LaunchPresenter {
             }
         }
     }
+}
+
+private struct Constants {
+    static let delayRange = 2.0...5.0
 }
